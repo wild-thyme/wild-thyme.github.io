@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#14130e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Wild Thyme">
+<title>The Bank Where the Wild Thyme Blows</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Pinyon+Script&display=swap">
+<link rel="stylesheet" href="vendor/quill.core.css">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="rails" aria-hidden="true" hidden>
+    <aside class="rail rail-l"></aside>
+    <aside class="rail rail-r"></aside>
+  </div>
+
+  <header class="top">
+    <a class="plaque" href="#/" aria-label="The Bank Where the Wild Thyme Blows — the archive">
+      <canvas class="sparkle" aria-hidden="true"></canvas>
+      <span class="plaque-inner">
+        <svg class="sigil" viewBox="0 0 40 60" aria-hidden="true"><use href="#thyme"/></svg>
+        <span class="plaque-title"><span class="pt-a">The Bank Where</span> <span class="pt-b">the Wild Thyme Blows</span></span>
+        <svg class="sigil flip" viewBox="0 0 40 60" aria-hidden="true"><use href="#thyme"/></svg>
+      </span>
+      <span class="plaque-quote"></span>
+    </a>
+  </header>
+
+  <nav class="nav" aria-label="Sections">
+    <a href="#/" data-nav="library">Library</a>
+    <a href="#/commonplace" data-nav="commonplace">Commonplace</a>
+    <a href="#/bower" data-nav="bower">Mood Board</a>
+    <span class="nav-grow"></span>
+    <a href="#/letters" data-nav="letters" class="nav-icon nav-letters" hidden aria-label="Correspondence" title="Correspondence">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12.5" rx="1.5"/><path d="M3.5 7l8.5 6.5L20.5 7"/></svg>
+      <span class="badge" hidden></span></a>
+    <a href="#/settings" data-nav="settings" class="nav-icon" aria-label="The Society’s Ledger" title="Settings &amp; import">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3.5h11l3 3V20.5H5z"/><path d="M8.5 9h7M8.5 12.5h7M8.5 16h4.5"/></svg></a>
+    <span class="sync-dot" data-state="local" aria-hidden="true"></span>
+  </nav>
+
+  <main id="view" tabindex="-1"></main>
+
+  <footer class="stone">
+    <div class="slab">
+      <p class="carved"></p>
+      <p class="carved-cite"></p>
+    </div>
+  </footer>
+
+  <div id="layer"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- the society's sigil: a sprig of wild thyme -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="thyme" viewBox="0 0 40 60">
+      <path d="M20 58 C20 46 19.2 32 21 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <g fill="currentColor">
+        <ellipse cx="14.2" cy="47" rx="4.6" ry="2" transform="rotate(28 14.2 47)"/>
+        <ellipse cx="25.6" cy="44.5" rx="4.6" ry="2" transform="rotate(-30 25.6 44.5)"/>
+        <ellipse cx="15" cy="37" rx="4.2" ry="1.8" transform="rotate(30 15 37)"/>
+        <ellipse cx="25.8" cy="34.5" rx="4.2" ry="1.8" transform="rotate(-32 25.8 34.5)"/>
+        <ellipse cx="16.2" cy="27.5" rx="3.6" ry="1.6" transform="rotate(34 16.2 27.5)"/>
+        <ellipse cx="25.6" cy="25.5" rx="3.6" ry="1.6" transform="rotate(-34 25.6 25.5)"/>
+        <circle cx="21" cy="9.5" r="2.6"/><circle cx="17.4" cy="12.4" r="2.1"/><circle cx="24.6" cy="12.2" r="2.1"/>
+        <circle cx="18.6" cy="6.6" r="1.8"/><circle cx="23.6" cy="6.4" r="1.8"/><circle cx="21.2" cy="3.6" r="1.5"/>
+        <circle cx="16.2" cy="16.6" r="1.6"/><circle cx="25.8" cy="16.2" r="1.6"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <script src="vendor/quill.js" defer></script>
+  <script src="vendor/Sortable.min.js" defer></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
