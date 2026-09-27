@@ -24,6 +24,7 @@ async function unseal() {
     LETTERS = await Promise.all(SEALED.letters.map(async ({ iv, ct, ...l }) => ({ ...l, ...(await open({ iv, ct })) })));
     SIGNATURE = SEALED.signature ? (await open(SEALED.signature)).s : '';
     unsealed = true;
+    changed();
   } catch (err) {
     console.warn('the letters stay sealed', err);
   }
@@ -46,6 +47,10 @@ function met(trigger, s) {
 const state = () => S.meta.letters || {};
 const localDay = ts => { const d = new Date(ts); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 const isInvite = l => [].concat(l.trigger || []).includes('first-open');
+
+// Anything showing letters redraws when they unseal or arrive.
+const listeners = new Set();
+const changed = () => listeners.forEach(f => f());
 
 export const hasLetters = () => LETTERS.length > 0;
 export const unread = () => LETTERS.filter(l => state()[l.id]?.arrived && !state()[l.id]?.opened).length;
@@ -81,6 +86,7 @@ export function watchLetters(onChange) {
     if (invite) setTimeout(() => openLetter(invite), 900);
     const others = fresh.filter(l => l !== invite);
     if (others.length) toast(others.length > 1 ? `${others.length} sealed letters have arrived.` : 'A sealed letter has arrived.', 4000);
+    if (fresh.length) changed();
     onChange?.();
   }, 600);
   unseal().then(ok => { if (!alive) return; onChange?.(); if (ok) run(); });
@@ -184,5 +190,6 @@ export function lettersView(root) {
   };
   draw();
   const off = onData(k => { if (k === 'meta') draw(); });
-  return () => { off(); root.onclick = null; };
+  listeners.add(draw);
+  return () => { off(); listeners.delete(draw); root.onclick = null; };
 }

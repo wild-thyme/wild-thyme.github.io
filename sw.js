@@ -1,6 +1,6 @@
 /* Service worker: opens instantly and offline.
    Bump CACHE on every deploy or installed copies keep serving the old files. */
-const CACHE = 'wild-thyme-202609262248';
+const CACHE = 'wild-thyme-202609262314';
 
 const SHELL = [
   './',

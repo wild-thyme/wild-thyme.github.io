@@ -116,7 +116,7 @@ export async function searchBooks(text, { limit = 12, title, author } = {}) {
   return (j.docs || []).map(d => ({
     olKey: d.key,
     title: d.title,
-    author: (d.author_name || []).slice(0, 2).join(' & '),
+    author: (d.author_name || [])[0] || '', // later names are often translators or illustrators
     year: d.first_publish_year || null,
     pages: d.number_of_pages_median || null,
     cover: d.cover_i ? `${COVERS}/id/${d.cover_i}-M.jpg` : null,
